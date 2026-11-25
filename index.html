@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Device test</title>
+<h1>Device test</h1>
+<p>This page sends a browser identification event to Fingerprint.</p>
+<p id="status">Checking this browser…</p>
+
+<script type="module">
+  const status = document.querySelector("#status");
+
+  try {
+    const Fingerprint = await import("https://fpjscdn.net/v4/OR6jwIaMdRKmrRoiJT03");
+    const agent = await Fingerprint.start();
+    const result = await agent.get();
+    status.textContent = `Visit recorded. Event ID: ${result.event_id}`;
+  } catch (error) {
+    status.textContent = `Check failed: ${error.message}`;
+  }
+</script>
+</html>
