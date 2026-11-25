@@ -5,6 +5,8 @@
 <h1>Device test</h1>
 <p>This page sends a browser identification event to Fingerprint.</p>
 <p id="status">Checking this browser…</p>
+<h2>Fingerprint response</h2>
+<pre id="api-response" style="white-space: pre-wrap; overflow-wrap: anywhere;"></pre>
 
 <script type="module">
   const status = document.querySelector("#status");
@@ -14,6 +16,7 @@
     const agent = await Fingerprint.start();
     const result = await agent.get();
     status.textContent = `Visit recorded. Event ID: ${result.event_id}`;
+    document.querySelector("#api-response").textContent = JSON.stringify(result, null, 2);
   } catch (error) {
     status.textContent = `Check failed: ${error.message}`;
   }
