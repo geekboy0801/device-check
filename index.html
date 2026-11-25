@@ -10,7 +10,7 @@
   const status = document.querySelector("#status");
 
   try {
-    const Fingerprint = await import("https://fpjscdn.net/v4/dvgd4lj2jODBpdZaBEmH");
+    const Fingerprint = await import("https://fpjscdn.net/v4/OR6jwIaMdRKmrRoiJT03");
     const agent = await Fingerprint.start();
     const result = await agent.get();
     status.textContent = `Visit recorded. Event ID: ${result.event_id}`;
